@@ -74,4 +74,12 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals(4, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.NOVEMBER));
         assertEquals(4, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.DECEMBER));
     }
+
+    public void testIndexOutOfBoundsException() {
+        try {
+            SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.AUGUST);
+            fail();
+        } catch (IllegalArgumentException expectedException) {
+        }
+    }
 }
