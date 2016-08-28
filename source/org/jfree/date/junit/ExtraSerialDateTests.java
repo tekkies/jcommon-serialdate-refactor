@@ -46,7 +46,7 @@ public class ExtraSerialDateTests extends TestCase {
     }
 
     public static Test suite() {
-        return new TestSuite(SerialDateUtilitiesTests.class);
+        return new TestSuite(ExtraSerialDateTests.class);
     }
 
     public void testIsValidWeekdayCode() {
@@ -77,7 +77,7 @@ public class ExtraSerialDateTests extends TestCase {
 
     public void testIndexOutOfBoundsException() {
         try {
-            SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.AUGUST);
+            SerialDate.monthCodeToQuarter(-1);
             fail();
         } catch (IllegalArgumentException expectedException) {
         }
