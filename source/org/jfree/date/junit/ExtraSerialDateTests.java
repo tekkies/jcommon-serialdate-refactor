@@ -59,4 +59,19 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals(true, SerialDate.isValidWeekdayCode(org.jfree.date.SerialDate.SATURDAY));
         assertEquals(false, SerialDate.isValidWeekdayCode(0));
     }
+
+    public void testMonthCodeToQuarter() {
+        assertEquals(1, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.JANUARY));
+        assertEquals(1, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.FEBRUARY));
+        assertEquals(1, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.MARCH));
+        assertEquals(2, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.APRIL));
+        assertEquals(2, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.MAY));
+        assertEquals(2, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.JUNE));
+        assertEquals(3, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.JULY));
+        assertEquals(3, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.AUGUST));
+        assertEquals(3, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.SEPTEMBER));
+        assertEquals(4, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.OCTOBER));
+        assertEquals(4, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.NOVEMBER));
+        assertEquals(4, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.DECEMBER));
+    }
 }
