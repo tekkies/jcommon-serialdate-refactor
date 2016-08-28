@@ -41,6 +41,8 @@ import org.jfree.date.SerialDate;
 
 public class ExtraSerialDateTests extends TestCase {
 
+    public static final int ILLEGAL_MONTH = -1;
+
     public ExtraSerialDateTests(final String name) {
         super(name);
     }
@@ -73,13 +75,19 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals(4, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.OCTOBER));
         assertEquals(4, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.NOVEMBER));
         assertEquals(4, SerialDate.monthCodeToQuarter(org.jfree.date.SerialDate.DECEMBER));
-    }
-
-    public void testIndexOutOfBoundsException() {
         try {
-            SerialDate.monthCodeToQuarter(-1);
+            SerialDate.monthCodeToQuarter(ILLEGAL_MONTH);
             fail();
         } catch (IllegalArgumentException expectedException) {
         }
+    }
+
+    public void testMonthCodeToString() {
+        try {
+            SerialDate.monthCodeToString(ILLEGAL_MONTH);
+            fail();
+        } catch (IllegalArgumentException expectedException) {
+        }
+        SerialDate.monthCodeToString(org.jfree.date.SerialDate.JANUARY, true);
     }
 }
