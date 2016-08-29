@@ -39,6 +39,9 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.jfree.date.SerialDate;
 
+import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
+
 public class ExtraSerialDateTests extends TestCase {
 
     public static final int ILLEGAL_MONTH = -1;
@@ -89,8 +92,7 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals("January", months[0].toString());
     }
 
-    public void testIsValidMonthCode()
-    {
+    public void testIsValidMonthCode() {
         assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.JANUARY));
         assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.FEBRUARY));
         assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.MARCH));
@@ -104,5 +106,14 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.NOVEMBER));
         assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.DECEMBER));
         assertEquals(false, SerialDate.isValidMonthCode(ILLEGAL_MONTH));
+    }
+
+    public void testMonthCodeToString() {
+        assertEquals(new SimpleDateFormat().getDateFormatSymbols().getShortMonths()[0],
+                SerialDate.monthCodeToString(org.jfree.date.SerialDate.JANUARY, true));
+        try {
+            SerialDate.monthCodeToString(ILLEGAL_MONTH);
+        } catch (IllegalArgumentException expectedException) {
+        }
     }
 }
