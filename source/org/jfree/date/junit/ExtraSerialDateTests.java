@@ -88,4 +88,21 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals(13, months.length);
         assertEquals("January", months[0].toString());
     }
+
+    public void testIsValidMonthCode()
+    {
+        assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.JANUARY));
+        assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.FEBRUARY));
+        assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.MARCH));
+        assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.APRIL));
+        assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.MAY));
+        assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.JUNE));
+        assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.JULY));
+        assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.AUGUST));
+        assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.SEPTEMBER));
+        assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.OCTOBER));
+        assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.NOVEMBER));
+        assertEquals(true, SerialDate.isValidMonthCode(org.jfree.date.SerialDate.DECEMBER));
+        assertEquals(false, SerialDate.isValidMonthCode(ILLEGAL_MONTH));
+    }
 }
