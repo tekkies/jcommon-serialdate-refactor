@@ -116,4 +116,13 @@ public class ExtraSerialDateTests extends TestCase {
         } catch (IllegalArgumentException expectedException) {
         }
     }
+
+    public void testIsValidWeekInMonthCode() {
+        assertEquals(true, SerialDate.isValidWeekInMonthCode(org.jfree.date.SerialDate.FIRST_WEEK_IN_MONTH));
+        assertEquals(true, SerialDate.isValidWeekInMonthCode(org.jfree.date.SerialDate.SECOND_WEEK_IN_MONTH));
+        assertEquals(true, SerialDate.isValidWeekInMonthCode(org.jfree.date.SerialDate.THIRD_WEEK_IN_MONTH));
+        assertEquals(true, SerialDate.isValidWeekInMonthCode(org.jfree.date.SerialDate.FOURTH_WEEK_IN_MONTH));
+        assertEquals(true, SerialDate.isValidWeekInMonthCode(org.jfree.date.SerialDate.LAST_WEEK_IN_MONTH));
+        assertEquals(false, SerialDate.isValidWeekInMonthCode(-1));
+    }
 }
