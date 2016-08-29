@@ -82,12 +82,10 @@ public class ExtraSerialDateTests extends TestCase {
         }
     }
 
-    public void testMonthCodeToString() {
-        try {
-            SerialDate.monthCodeToString(ILLEGAL_MONTH);
-            fail();
-        } catch (IllegalArgumentException expectedException) {
-        }
-        SerialDate.monthCodeToString(org.jfree.date.SerialDate.JANUARY, true);
+    public void testGetMonths()
+    {
+        String[] months = SerialDate.getMonths();
+        assertEquals(13, months.length);
+        assertEquals("January", months[0].toString());
     }
 }
