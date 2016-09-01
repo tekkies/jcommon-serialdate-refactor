@@ -344,4 +344,10 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals(false, saturday20Aug2016.equals(""));
     }
 
+    public void testHashCode() {
+        SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
+        assertEquals(42602, saturday20Aug2016.hashCode());
+    }
+
+
 }
