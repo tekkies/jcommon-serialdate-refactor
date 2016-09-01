@@ -349,5 +349,12 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals(42602, saturday20Aug2016.hashCode());
     }
 
+    public void testCompareTo() {
+        SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
+        SerialDate sunday21Aug2016 = SerialDate.createInstance(21,8,2016);
+        assertEquals(-1, saturday20Aug2016.compareTo(sunday21Aug2016));
+        assertEquals(0, saturday20Aug2016.compareTo(saturday20Aug2016));
+        assertEquals(1, sunday21Aug2016.compareTo(saturday20Aug2016));
+    }
 
 }
