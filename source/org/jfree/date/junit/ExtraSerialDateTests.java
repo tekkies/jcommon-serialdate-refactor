@@ -270,4 +270,9 @@ public class ExtraSerialDateTests extends TestCase {
         saturday20Aug2016.setDescription("serialDateDescription");
         assertEquals("serialDateDescription", saturday20Aug2016.getDescription());
     }
+
+    public void testToString() {
+        SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
+        assertEquals("20-August-2016", saturday20Aug2016.toString());
+    }
 }
