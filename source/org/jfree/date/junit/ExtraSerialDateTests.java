@@ -362,4 +362,12 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals(false, sunday21Aug2016.isAfter(sunday21Aug2016));
         assertEquals(false, saturday20Aug2016.isAfter(sunday21Aug2016));
     }
+
+    public void testIsOnOrAfter() {
+        SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
+        SerialDate sunday21Aug2016 = SerialDate.createInstance(21, 8, 2016);
+        assertEquals(true, sunday21Aug2016.isOnOrAfter(saturday20Aug2016));
+        assertEquals(true, sunday21Aug2016.isOnOrAfter(sunday21Aug2016));
+        assertEquals(false, saturday20Aug2016.isOnOrAfter(sunday21Aug2016));
+    }
 }
