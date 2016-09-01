@@ -150,6 +150,8 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals(SerialDate.createInstance(18,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.THURSDAY, saturday20Aug2016));
         assertEquals(SerialDate.createInstance(19,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.FRIDAY, saturday20Aug2016));
         assertEquals(SerialDate.createInstance(13,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.SATURDAY, saturday20Aug2016));
+
+        assertEquals(SerialDate.createInstance(14,8,2016),  sunday21Aug2016.getPreviousDayOfWeek(SerialDate.SUNDAY));
     }
 
     public void testGetFollowingDayOfWeek() {
@@ -183,6 +185,8 @@ public class ExtraSerialDateTests extends TestCase {
         } else {
             assertEquals(SerialDate.createInstance(27, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.SATURDAY, saturday20Aug2016));
         }
+
+        assertEquals(SerialDate.createInstance(26,8,2016),  saturday20Aug2016.getFollowingDayOfWeek(SerialDate.FRIDAY));
     }
 
     public void testGetNearestDayOfWeek() {
@@ -217,6 +221,8 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals(SerialDate.createInstance(18,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.THURSDAY, saturday20Aug2016));
         assertEquals(SerialDate.createInstance(19,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.FRIDAY, saturday20Aug2016));
         assertEquals(SerialDate.createInstance(20,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.SATURDAY, saturday20Aug2016));
+
+        assertEquals(SerialDate.createInstance(20,8,2016),  saturday20Aug2016.getNearestDayOfWeek(SerialDate.SATURDAY));
     }
 
     private SerialDate getNearestDayOfWeekWithDowCheck(final int targetDOW,
@@ -257,5 +263,11 @@ public class ExtraSerialDateTests extends TestCase {
         calendar.set(2016, 9-1, 1);
         SerialDate instance = SerialDate.createInstance(calendar.getTime());
         assertEquals(SerialDate.createInstance(1,9,2016), instance);
+    }
+
+    public void testDescription() {
+        SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
+        saturday20Aug2016.setDescription("serialDateDescription");
+        assertEquals("serialDateDescription", saturday20Aug2016.getDescription());
     }
 }
