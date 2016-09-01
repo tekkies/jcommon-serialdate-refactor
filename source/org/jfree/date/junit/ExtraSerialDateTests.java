@@ -40,6 +40,7 @@ import junit.framework.TestSuite;
 import org.jfree.date.SerialDate;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class ExtraSerialDateTests extends TestCase {
 
@@ -249,5 +250,12 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals("Nearest", SerialDate.relativeToString(SerialDate.NEAREST));
         assertEquals("Following", SerialDate.relativeToString(SerialDate.FOLLOWING));
         assertEquals("ERROR : Relative To String", SerialDate.relativeToString(-2));
+    }
+
+    public void testCreateInstance() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2016, 9-1, 1);
+        SerialDate instance = SerialDate.createInstance(calendar.getTime());
+        assertEquals(SerialDate.createInstance(1,9,2016), instance);
     }
 }
