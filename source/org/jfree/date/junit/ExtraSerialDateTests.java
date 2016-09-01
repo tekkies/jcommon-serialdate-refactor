@@ -37,6 +37,7 @@ package org.jfree.date.junit;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.jfree.date.MonthConstants;
 import org.jfree.date.SerialDate;
 
 import java.text.SimpleDateFormat;
@@ -263,6 +264,46 @@ public class ExtraSerialDateTests extends TestCase {
         calendar.set(2016, 9-1, 1);
         SerialDate instance = SerialDate.createInstance(calendar.getTime());
         assertEquals(SerialDate.createInstance(1,9,2016), instance);
+
+        try {
+            SerialDate.createInstance(20, MonthConstants.AUGUST, 1899);
+            fail();
+        } catch (IllegalArgumentException expectedException) {
+            assertEquals("The 'year' argument must be in range 1900 to 9999.", expectedException.getMessage());
+        }
+
+        try {
+            SerialDate.createInstance(20, MonthConstants.AUGUST, 10000);
+            fail();
+        } catch (IllegalArgumentException expectedException) {
+            assertEquals("The 'year' argument must be in range 1900 to 9999.", expectedException.getMessage());
+        }
+
+        try {
+            SerialDate.createInstance(20, MonthConstants.JANUARY-1, 2016);
+            fail();
+        } catch (IllegalArgumentException expectedException) {
+            assertEquals("The 'month' argument must be in the range 1 to 12.", expectedException.getMessage());
+        }
+
+        try {
+            SerialDate.createInstance(20, MonthConstants.DECEMBER+1, 2016);
+            fail();
+        } catch (IllegalArgumentException expectedException) {
+            assertEquals("The 'month' argument must be in the range 1 to 12.", expectedException.getMessage());
+        }
+        try {
+            SerialDate.createInstance(0, MonthConstants.JANUARY, 2016);
+            fail();
+        } catch (IllegalArgumentException expectedException) {
+            assertEquals("Invalid 'day' argument.", expectedException.getMessage());
+        }
+        try {
+            SerialDate.createInstance(31, MonthConstants.FEBRUARY, 2016);
+            fail();
+        } catch (IllegalArgumentException expectedException) {
+            assertEquals("Invalid 'day' argument.", expectedException.getMessage());
+        }
     }
 
     public void testDescription() {
