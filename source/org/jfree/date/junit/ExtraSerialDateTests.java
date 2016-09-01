@@ -233,4 +233,14 @@ public class ExtraSerialDateTests extends TestCase {
         SerialDate endOfMonth = saturday20Aug2016.getEndOfCurrentMonth(saturday20Aug2016);
         assertEquals(SerialDate.createInstance(31,8,2016), endOfMonth);
     }
+
+    public void testWeekInMonthToString()
+    {
+        assertEquals("First"     , SerialDate.weekInMonthToString(SerialDate.FIRST_WEEK_IN_MONTH ));
+        assertEquals("Second"     , SerialDate.weekInMonthToString(SerialDate.SECOND_WEEK_IN_MONTH));
+        assertEquals("Third"     , SerialDate.weekInMonthToString(SerialDate.THIRD_WEEK_IN_MONTH ));
+        assertEquals("Fourth"     , SerialDate.weekInMonthToString(SerialDate.FOURTH_WEEK_IN_MONTH));
+        assertEquals("Last"     , SerialDate.weekInMonthToString(SerialDate.LAST_WEEK_IN_MONTH));
+        assertEquals("SerialDate.weekInMonthToString(): invalid code.", SerialDate.weekInMonthToString(-1));
+    }
 }
