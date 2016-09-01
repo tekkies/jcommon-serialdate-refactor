@@ -243,4 +243,11 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals("Last"     , SerialDate.weekInMonthToString(SerialDate.LAST_WEEK_IN_MONTH));
         assertEquals("SerialDate.weekInMonthToString(): invalid code.", SerialDate.weekInMonthToString(-1));
     }
+
+    public void testRelativeToString() {
+        assertEquals("Preceding", SerialDate.relativeToString(SerialDate.PRECEDING));
+        assertEquals("Nearest", SerialDate.relativeToString(SerialDate.NEAREST));
+        assertEquals("Following", SerialDate.relativeToString(SerialDate.FOLLOWING));
+        assertEquals("ERROR : Relative To String", SerialDate.relativeToString(-2));
+    }
 }
