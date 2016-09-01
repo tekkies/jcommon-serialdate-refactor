@@ -227,4 +227,10 @@ public class ExtraSerialDateTests extends TestCase {
         }
         return nearestDayOfWeek;
     }
+
+    public void testGetEndOfCurrentMonth() {
+        SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
+        SerialDate endOfMonth = saturday20Aug2016.getEndOfCurrentMonth(saturday20Aug2016);
+        assertEquals(SerialDate.createInstance(31,8,2016), endOfMonth);
+    }
 }
