@@ -88,8 +88,7 @@ public class ExtraSerialDateTests extends TestCase {
         }
     }
 
-    public void testGetMonths()
-    {
+    public void testGetMonths() {
         String[] months = SerialDate.getMonths();
         assertEquals(13, months.length);
         assertEquals("January", months[0].toString());
@@ -131,106 +130,106 @@ public class ExtraSerialDateTests extends TestCase {
 
     public void testGetPreviousDayOfWeek() {
         try {
-            SerialDate.getPreviousDayOfWeek(-1, SerialDate.createInstance(26,10,1985));
+            SerialDate.getPreviousDayOfWeek(-1, SerialDate.createInstance(26, 10, 1985));
             fail();
         } catch (IllegalArgumentException expectedException) {
         }
         SerialDate sunday21Aug2016 = SerialDate.createInstance(21, 8, 2016);
-        assertEquals(SerialDate.createInstance(14,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.SUNDAY, sunday21Aug2016));
-        assertEquals(SerialDate.createInstance(15,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.MONDAY, sunday21Aug2016));
-        assertEquals(SerialDate.createInstance(16,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.TUESDAY, sunday21Aug2016));
-        assertEquals(SerialDate.createInstance(17,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.WEDNESDAY, sunday21Aug2016));
-        assertEquals(SerialDate.createInstance(18,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.THURSDAY, sunday21Aug2016));
-        assertEquals(SerialDate.createInstance(19,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.FRIDAY, sunday21Aug2016));
-        assertEquals(SerialDate.createInstance(20,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.SATURDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(14, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.SUNDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(15, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.MONDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(16, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.TUESDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(17, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.WEDNESDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(18, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.THURSDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(19, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.FRIDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(20, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.SATURDAY, sunday21Aug2016));
 
         SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
         assertEquals(SerialDate.createInstance(14, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.SUNDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(15,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.MONDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(16,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.TUESDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(17,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.WEDNESDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(18,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.THURSDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(19,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.FRIDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(13,8,2016),  SerialDate.getPreviousDayOfWeek(SerialDate.SATURDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(15, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.MONDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(16, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.TUESDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(17, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.WEDNESDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(18, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.THURSDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(19, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.FRIDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(13, 8, 2016), SerialDate.getPreviousDayOfWeek(SerialDate.SATURDAY, saturday20Aug2016));
 
-        assertEquals(SerialDate.createInstance(14,8,2016),  sunday21Aug2016.getPreviousDayOfWeek(SerialDate.SUNDAY));
+        assertEquals(SerialDate.createInstance(14, 8, 2016), sunday21Aug2016.getPreviousDayOfWeek(SerialDate.SUNDAY));
     }
 
     public void testGetFollowingDayOfWeek() {
         try {
-            SerialDate.getFollowingDayOfWeek(-1, SerialDate.createInstance(26,10,1985));
+            SerialDate.getFollowingDayOfWeek(-1, SerialDate.createInstance(26, 10, 1985));
             fail();
         } catch (IllegalArgumentException expectedException) {
         }
         SerialDate sunday21Aug2016 = SerialDate.createInstance(21, 8, 2016);
-        if(originalBehaviour) {
+        if (originalBehaviour) {
             assertEquals(SerialDate.createInstance(21, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.SUNDAY, sunday21Aug2016));
         } else {
             assertEquals(SerialDate.createInstance(28, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.SUNDAY, sunday21Aug2016));
         }
-        assertEquals(SerialDate.createInstance(22,8,2016),  SerialDate.getFollowingDayOfWeek(SerialDate.MONDAY, sunday21Aug2016));
-        assertEquals(SerialDate.createInstance(23,8,2016),  SerialDate.getFollowingDayOfWeek(SerialDate.TUESDAY, sunday21Aug2016));
-        assertEquals(SerialDate.createInstance(24,8,2016),  SerialDate.getFollowingDayOfWeek(SerialDate.WEDNESDAY, sunday21Aug2016));
-        assertEquals(SerialDate.createInstance(25,8,2016),  SerialDate.getFollowingDayOfWeek(SerialDate.THURSDAY, sunday21Aug2016));
-        assertEquals(SerialDate.createInstance(26,8,2016),  SerialDate.getFollowingDayOfWeek(SerialDate.FRIDAY, sunday21Aug2016));
-        assertEquals(SerialDate.createInstance(27,8,2016),  SerialDate.getFollowingDayOfWeek(SerialDate.SATURDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(22, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.MONDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(23, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.TUESDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(24, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.WEDNESDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(25, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.THURSDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(26, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.FRIDAY, sunday21Aug2016));
+        assertEquals(SerialDate.createInstance(27, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.SATURDAY, sunday21Aug2016));
 
         SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
-        assertEquals(SerialDate.createInstance(21,8,2016),  SerialDate.getFollowingDayOfWeek(SerialDate.SUNDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(22,8,2016),  SerialDate.getFollowingDayOfWeek(SerialDate.MONDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(23,8,2016),  SerialDate.getFollowingDayOfWeek(SerialDate.TUESDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(24,8,2016),  SerialDate.getFollowingDayOfWeek(SerialDate.WEDNESDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(25,8,2016),  SerialDate.getFollowingDayOfWeek(SerialDate.THURSDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(26,8,2016),  SerialDate.getFollowingDayOfWeek(SerialDate.FRIDAY, saturday20Aug2016));
-        if(originalBehaviour) {
+        assertEquals(SerialDate.createInstance(21, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.SUNDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(22, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.MONDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(23, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.TUESDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(24, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.WEDNESDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(25, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.THURSDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(26, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.FRIDAY, saturday20Aug2016));
+        if (originalBehaviour) {
             assertEquals(SerialDate.createInstance(20, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.SATURDAY, saturday20Aug2016));
         } else {
             assertEquals(SerialDate.createInstance(27, 8, 2016), SerialDate.getFollowingDayOfWeek(SerialDate.SATURDAY, saturday20Aug2016));
         }
 
-        assertEquals(SerialDate.createInstance(26,8,2016),  saturday20Aug2016.getFollowingDayOfWeek(SerialDate.FRIDAY));
+        assertEquals(SerialDate.createInstance(26, 8, 2016), saturday20Aug2016.getFollowingDayOfWeek(SerialDate.FRIDAY));
     }
 
     public void testGetNearestDayOfWeek() {
         try {
-            SerialDate.getNearestDayOfWeek(-1, SerialDate.createInstance(26,10,1985));
+            SerialDate.getNearestDayOfWeek(-1, SerialDate.createInstance(26, 10, 1985));
             fail();
         } catch (IllegalArgumentException expectedException) {
         }
-        SerialDate sunday21Aug2016 = SerialDate.createInstance(21,8,2016);
-        assertEquals(SerialDate.createInstance(21,8,2016), SerialDate.getNearestDayOfWeek(SerialDate.SUNDAY, sunday21Aug2016));
-        if(originalBehaviour) {
-            assertEquals(SerialDate.createInstance(20,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.MONDAY, sunday21Aug2016));
-            assertEquals(SerialDate.createInstance(19,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.TUESDAY, sunday21Aug2016));
-            assertEquals(SerialDate.createInstance(18,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.WEDNESDAY, sunday21Aug2016));
-            assertEquals(SerialDate.createInstance(24,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.THURSDAY, sunday21Aug2016));
-            assertEquals(SerialDate.createInstance(23,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.FRIDAY, sunday21Aug2016));
-            assertEquals(SerialDate.createInstance(22,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.SATURDAY, sunday21Aug2016));
+        SerialDate sunday21Aug2016 = SerialDate.createInstance(21, 8, 2016);
+        assertEquals(SerialDate.createInstance(21, 8, 2016), SerialDate.getNearestDayOfWeek(SerialDate.SUNDAY, sunday21Aug2016));
+        if (originalBehaviour) {
+            assertEquals(SerialDate.createInstance(20, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.MONDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(19, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.TUESDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(18, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.WEDNESDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(24, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.THURSDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(23, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.FRIDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(22, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.SATURDAY, sunday21Aug2016));
         } else {
-            assertEquals(SerialDate.createInstance(22,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.MONDAY, sunday21Aug2016));
-            assertEquals(SerialDate.createInstance(23,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.TUESDAY, sunday21Aug2016));
-            assertEquals(SerialDate.createInstance(24,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.WEDNESDAY, sunday21Aug2016));
-            assertEquals(SerialDate.createInstance(18,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.THURSDAY, sunday21Aug2016));
-            assertEquals(SerialDate.createInstance(19,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.FRIDAY, sunday21Aug2016));
-            assertEquals(SerialDate.createInstance(20,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.SATURDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(22, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.MONDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(23, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.TUESDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(24, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.WEDNESDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(18, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.THURSDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(19, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.FRIDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(20, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.SATURDAY, sunday21Aug2016));
         }
 
         SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
-        assertEquals(SerialDate.createInstance(21,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.SUNDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(22,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.MONDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(23,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.TUESDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(17,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.WEDNESDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(18,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.THURSDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(19,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.FRIDAY, saturday20Aug2016));
-        assertEquals(SerialDate.createInstance(20,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.SATURDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(21, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.SUNDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(22, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.MONDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(23, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.TUESDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(17, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.WEDNESDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(18, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.THURSDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(19, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.FRIDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(20, 8, 2016), getNearestDayOfWeekWithDowCheck(SerialDate.SATURDAY, saturday20Aug2016));
 
-        assertEquals(SerialDate.createInstance(20,8,2016),  saturday20Aug2016.getNearestDayOfWeek(SerialDate.SATURDAY));
+        assertEquals(SerialDate.createInstance(20, 8, 2016), saturday20Aug2016.getNearestDayOfWeek(SerialDate.SATURDAY));
     }
 
     private SerialDate getNearestDayOfWeekWithDowCheck(final int targetDOW,
                                                        final SerialDate base) {
         SerialDate nearestDayOfWeek = SerialDate.getNearestDayOfWeek(targetDOW, base);
-        if(!originalBehaviour) {
+        if (!originalBehaviour) {
             int resultDow = nearestDayOfWeek.getDayOfWeek();
             junit.framework.Assert.assertEquals(targetDOW, resultDow);
         }
@@ -240,16 +239,15 @@ public class ExtraSerialDateTests extends TestCase {
     public void testGetEndOfCurrentMonth() {
         SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
         SerialDate endOfMonth = saturday20Aug2016.getEndOfCurrentMonth(saturday20Aug2016);
-        assertEquals(SerialDate.createInstance(31,8,2016), endOfMonth);
+        assertEquals(SerialDate.createInstance(31, 8, 2016), endOfMonth);
     }
 
-    public void testWeekInMonthToString()
-    {
-        assertEquals("First"     , SerialDate.weekInMonthToString(SerialDate.FIRST_WEEK_IN_MONTH ));
-        assertEquals("Second"     , SerialDate.weekInMonthToString(SerialDate.SECOND_WEEK_IN_MONTH));
-        assertEquals("Third"     , SerialDate.weekInMonthToString(SerialDate.THIRD_WEEK_IN_MONTH ));
-        assertEquals("Fourth"     , SerialDate.weekInMonthToString(SerialDate.FOURTH_WEEK_IN_MONTH));
-        assertEquals("Last"     , SerialDate.weekInMonthToString(SerialDate.LAST_WEEK_IN_MONTH));
+    public void testWeekInMonthToString() {
+        assertEquals("First", SerialDate.weekInMonthToString(SerialDate.FIRST_WEEK_IN_MONTH));
+        assertEquals("Second", SerialDate.weekInMonthToString(SerialDate.SECOND_WEEK_IN_MONTH));
+        assertEquals("Third", SerialDate.weekInMonthToString(SerialDate.THIRD_WEEK_IN_MONTH));
+        assertEquals("Fourth", SerialDate.weekInMonthToString(SerialDate.FOURTH_WEEK_IN_MONTH));
+        assertEquals("Last", SerialDate.weekInMonthToString(SerialDate.LAST_WEEK_IN_MONTH));
         assertEquals("SerialDate.weekInMonthToString(): invalid code.", SerialDate.weekInMonthToString(-1));
     }
 
@@ -262,9 +260,9 @@ public class ExtraSerialDateTests extends TestCase {
 
     public void testCreateInstance() {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2016, 9-1, 1);
+        calendar.set(2016, 9 - 1, 1);
         SerialDate instance = SerialDate.createInstance(calendar.getTime());
-        assertEquals(SerialDate.createInstance(1,9,2016), instance);
+        assertEquals(SerialDate.createInstance(1, 9, 2016), instance);
 
         try {
             SerialDate.createInstance(20, MonthConstants.AUGUST, 1899);
@@ -281,14 +279,14 @@ public class ExtraSerialDateTests extends TestCase {
         }
 
         try {
-            SerialDate.createInstance(20, MonthConstants.JANUARY-1, 2016);
+            SerialDate.createInstance(20, MonthConstants.JANUARY - 1, 2016);
             fail();
         } catch (IllegalArgumentException expectedException) {
             assertEquals("The 'month' argument must be in the range 1 to 12.", expectedException.getMessage());
         }
 
         try {
-            SerialDate.createInstance(20, MonthConstants.DECEMBER+1, 2016);
+            SerialDate.createInstance(20, MonthConstants.DECEMBER + 1, 2016);
             fail();
         } catch (IllegalArgumentException expectedException) {
             assertEquals("The 'month' argument must be in the range 1 to 12.", expectedException.getMessage());
@@ -307,14 +305,14 @@ public class ExtraSerialDateTests extends TestCase {
         }
 
         try {
-            SerialDate.createInstance(SerialDate.SERIAL_LOWER_BOUND-1);
+            SerialDate.createInstance(SerialDate.SERIAL_LOWER_BOUND - 1);
             fail();
         } catch (IllegalArgumentException expectedException) {
             assertEquals("SpreadsheetDate: Serial must be in range 2 to 2958465.", expectedException.getMessage());
         }
 
         try {
-            SerialDate.createInstance(SerialDate.SERIAL_UPPER_BOUND+1);
+            SerialDate.createInstance(SerialDate.SERIAL_UPPER_BOUND + 1);
             fail();
         } catch (IllegalArgumentException expectedException) {
             assertEquals("SpreadsheetDate: Serial must be in range 2 to 2958465.", expectedException.getMessage());
@@ -335,7 +333,7 @@ public class ExtraSerialDateTests extends TestCase {
     public void testToDate() {
         SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2016, 8-1, 20, 0, 0, 0);
+        calendar.set(2016, 8 - 1, 20, 0, 0, 0);
         assertEquals(calendar.getTime(), saturday20Aug2016.toDate());
     }
 
@@ -351,10 +349,17 @@ public class ExtraSerialDateTests extends TestCase {
 
     public void testCompareTo() {
         SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
-        SerialDate sunday21Aug2016 = SerialDate.createInstance(21,8,2016);
+        SerialDate sunday21Aug2016 = SerialDate.createInstance(21, 8, 2016);
         assertEquals(-1, saturday20Aug2016.compareTo(sunday21Aug2016));
         assertEquals(0, saturday20Aug2016.compareTo(saturday20Aug2016));
         assertEquals(1, sunday21Aug2016.compareTo(saturday20Aug2016));
     }
 
+    public void testIsAfter() {
+        SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
+        SerialDate sunday21Aug2016 = SerialDate.createInstance(21, 8, 2016);
+        assertEquals(true, sunday21Aug2016.isAfter(saturday20Aug2016));
+        assertEquals(false, sunday21Aug2016.isAfter(sunday21Aug2016));
+        assertEquals(false, saturday20Aug2016.isAfter(sunday21Aug2016));
+    }
 }
