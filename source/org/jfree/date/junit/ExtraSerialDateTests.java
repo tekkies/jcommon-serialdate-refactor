@@ -304,6 +304,20 @@ public class ExtraSerialDateTests extends TestCase {
         } catch (IllegalArgumentException expectedException) {
             assertEquals("Invalid 'day' argument.", expectedException.getMessage());
         }
+
+        try {
+            SerialDate.createInstance(SerialDate.SERIAL_LOWER_BOUND-1);
+            fail();
+        } catch (IllegalArgumentException expectedException) {
+            assertEquals("SpreadsheetDate: Serial must be in range 2 to 2958465.", expectedException.getMessage());
+        }
+
+        try {
+            SerialDate.createInstance(SerialDate.SERIAL_UPPER_BOUND+1);
+            fail();
+        } catch (IllegalArgumentException expectedException) {
+            assertEquals("SpreadsheetDate: Serial must be in range 2 to 2958465.", expectedException.getMessage());
+        }
     }
 
     public void testDescription() {
