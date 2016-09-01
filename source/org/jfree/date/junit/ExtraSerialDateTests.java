@@ -52,6 +52,7 @@ public class ExtraSerialDateTests extends TestCase {
         super(name);
     }
 
+
     public static Test suite() {
         return new TestSuite(ExtraSerialDateTests.class);
     }
@@ -337,4 +338,10 @@ public class ExtraSerialDateTests extends TestCase {
         calendar.set(2016, 8-1, 20, 0, 0, 0);
         assertEquals(calendar.getTime(), saturday20Aug2016.toDate());
     }
+
+    public void testEquals() {
+        SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
+        assertEquals(false, saturday20Aug2016.equals(""));
+    }
+
 }
