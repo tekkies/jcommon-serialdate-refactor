@@ -370,4 +370,42 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals(true, sunday21Aug2016.isOnOrAfter(sunday21Aug2016));
         assertEquals(false, saturday20Aug2016.isOnOrAfter(sunday21Aug2016));
     }
+
+    public void testIsInRange() {
+        SerialDate mon = SerialDate.createInstance(5, 9, 2016);
+        SerialDate wed = SerialDate.createInstance(7, 9, 2016);
+        SerialDate fri = SerialDate.createInstance(9, 9, 2016);
+
+        assertEquals(true, wed.isInRange(mon, fri));
+
+
+        assertEquals(true,  wed.isInRange(mon, fri, SerialDate.INCLUDE_BOTH));
+        assertEquals(true,  wed.isInRange(wed, fri, SerialDate.INCLUDE_BOTH));
+        assertEquals(true,  wed.isInRange(mon, wed, SerialDate.INCLUDE_BOTH));
+        assertEquals(false, mon.isInRange(wed, fri, SerialDate.INCLUDE_BOTH));
+
+        assertEquals(true,  wed.isInRange(mon, fri, SerialDate.INCLUDE_NONE));
+        assertEquals(false, wed.isInRange(wed, fri, SerialDate.INCLUDE_NONE));
+        assertEquals(false, wed.isInRange(mon, wed, SerialDate.INCLUDE_NONE));
+        assertEquals(false, mon.isInRange(wed, fri, SerialDate.INCLUDE_NONE));
+
+        assertEquals(true,  wed.isInRange(mon, fri, SerialDate.INCLUDE_FIRST));
+        assertEquals(true,  wed.isInRange(wed, fri, SerialDate.INCLUDE_FIRST));
+        assertEquals(false, wed.isInRange(mon, wed, SerialDate.INCLUDE_FIRST));
+        assertEquals(false, mon.isInRange(wed, fri, SerialDate.INCLUDE_FIRST));
+
+        assertEquals(true,  wed.isInRange(mon, fri, SerialDate.INCLUDE_SECOND));
+        assertEquals(false, wed.isInRange(wed, fri, SerialDate.INCLUDE_SECOND));
+        assertEquals(true,  wed.isInRange(mon, wed, SerialDate.INCLUDE_SECOND));
+        assertEquals(false, mon.isInRange(wed, fri, SerialDate.INCLUDE_SECOND));
+
+        if(!originalBehaviour) {
+            try {
+                assertEquals(true, mon.isInRange(fri, wed, SerialDate.INCLUDE_BOTH));
+                fail();
+            } catch (IllegalArgumentException expectedException) {
+                assertEquals("p2 must be greater or equal to p1", expectedException.getMessage());
+            }
+        }
+    }
 }
