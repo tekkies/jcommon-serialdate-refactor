@@ -39,7 +39,6 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.jfree.date.SerialDate;
 
-import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 
 public class ExtraSerialDateTests extends TestCase {
@@ -185,4 +184,47 @@ public class ExtraSerialDateTests extends TestCase {
         }
     }
 
+    public void testGetNearestDayOfWeek() {
+        try {
+            SerialDate.getNearestDayOfWeek(-1, SerialDate.createInstance(26,10,1985));
+            fail();
+        } catch (IllegalArgumentException expectedException) {
+        }
+        SerialDate sunday21Aug2016 = SerialDate.createInstance(21,8,2016);
+        assertEquals(SerialDate.createInstance(21,8,2016), SerialDate.getNearestDayOfWeek(SerialDate.SUNDAY, sunday21Aug2016));
+        if(originalBehaviour) {
+            assertEquals(SerialDate.createInstance(20,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.MONDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(19,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.TUESDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(18,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.WEDNESDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(24,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.THURSDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(23,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.FRIDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(22,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.SATURDAY, sunday21Aug2016));
+        } else {
+            assertEquals(SerialDate.createInstance(22,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.MONDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(23,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.TUESDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(24,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.WEDNESDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(18,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.THURSDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(19,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.FRIDAY, sunday21Aug2016));
+            assertEquals(SerialDate.createInstance(20,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.SATURDAY, sunday21Aug2016));
+        }
+
+        SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
+        assertEquals(SerialDate.createInstance(21,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.SUNDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(22,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.MONDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(23,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.TUESDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(17,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.WEDNESDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(18,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.THURSDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(19,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.FRIDAY, saturday20Aug2016));
+        assertEquals(SerialDate.createInstance(20,8,2016),  getNearestDayOfWeekWithDowCheck(SerialDate.SATURDAY, saturday20Aug2016));
+    }
+
+    private SerialDate getNearestDayOfWeekWithDowCheck(final int targetDOW,
+                                                       final SerialDate base) {
+        SerialDate nearestDayOfWeek = SerialDate.getNearestDayOfWeek(targetDOW, base);
+        if(!originalBehaviour) {
+            int resultDow = nearestDayOfWeek.getDayOfWeek();
+            junit.framework.Assert.assertEquals(targetDOW, resultDow);
+        }
+        return nearestDayOfWeek;
+    }
 }
