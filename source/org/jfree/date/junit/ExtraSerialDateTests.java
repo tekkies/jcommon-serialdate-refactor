@@ -111,8 +111,32 @@ public class ExtraSerialDateTests extends TestCase {
     }
 
     public void testMonthCodeToString() {
-        assertEquals(new SimpleDateFormat().getDateFormatSymbols().getShortMonths()[0],
-                SerialDate.monthCodeToString(org.jfree.date.SerialDate.JANUARY, true));
+        assertEquals("Jan", SerialDate.monthCodeToString(SerialDate.JANUARY, true));
+        assertEquals("Feb", SerialDate.monthCodeToString(SerialDate.FEBRUARY, true));
+        assertEquals("Mar", SerialDate.monthCodeToString(SerialDate.MARCH, true));
+        assertEquals("Apr", SerialDate.monthCodeToString(SerialDate.APRIL, true));
+        assertEquals("May", SerialDate.monthCodeToString(SerialDate.MAY, true));
+        assertEquals("Jun", SerialDate.monthCodeToString(SerialDate.JUNE, true));
+        assertEquals("Jul", SerialDate.monthCodeToString(SerialDate.JULY, true));
+        assertEquals("Aug", SerialDate.monthCodeToString(SerialDate.AUGUST, true));
+        assertEquals("Sep", SerialDate.monthCodeToString(SerialDate.SEPTEMBER, true));
+        assertEquals("Oct", SerialDate.monthCodeToString(SerialDate.OCTOBER, true));
+        assertEquals("Nov", SerialDate.monthCodeToString(SerialDate.NOVEMBER, true));
+        assertEquals("Dec", SerialDate.monthCodeToString(SerialDate.DECEMBER, true));
+
+        assertEquals("January", SerialDate.monthCodeToString(SerialDate.JANUARY, false));
+        assertEquals("February", SerialDate.monthCodeToString(SerialDate.FEBRUARY, false));
+        assertEquals("March", SerialDate.monthCodeToString(SerialDate.MARCH, false));
+        assertEquals("April", SerialDate.monthCodeToString(SerialDate.APRIL, false));
+        assertEquals("May", SerialDate.monthCodeToString(SerialDate.MAY, false));
+        assertEquals("June", SerialDate.monthCodeToString(SerialDate.JUNE, false));
+        assertEquals("July", SerialDate.monthCodeToString(SerialDate.JULY, false));
+        assertEquals("August", SerialDate.monthCodeToString(SerialDate.AUGUST, false));
+        assertEquals("September", SerialDate.monthCodeToString(SerialDate.SEPTEMBER, false));
+        assertEquals("October", SerialDate.monthCodeToString(SerialDate.OCTOBER, false));
+        assertEquals("November", SerialDate.monthCodeToString(SerialDate.NOVEMBER, false));
+        assertEquals("December", SerialDate.monthCodeToString(SerialDate.DECEMBER, false));
+
         try {
             SerialDate.monthCodeToString(ILLEGAL_MONTH);
         } catch (IllegalArgumentException expectedException) {
