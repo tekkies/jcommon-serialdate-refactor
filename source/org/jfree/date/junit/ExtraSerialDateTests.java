@@ -111,8 +111,18 @@ public class ExtraSerialDateTests extends TestCase {
     }
 
     public void testMonthCodeToString() {
-        assertEquals(new SimpleDateFormat().getDateFormatSymbols().getShortMonths()[0],
-                SerialDate.monthCodeToString(org.jfree.date.SerialDate.JANUARY, true));
+        assertEquals("Jan", SerialDate.monthCodeToString(SerialDate.JANUARY, true));
+        assertEquals("Feb", SerialDate.monthCodeToString(SerialDate.FEBRUARY, true));
+        assertEquals("Mar", SerialDate.monthCodeToString(SerialDate.MARCH, true));
+        assertEquals("Apr", SerialDate.monthCodeToString(SerialDate.APRIL, true));
+        assertEquals("May", SerialDate.monthCodeToString(SerialDate.MAY, true));
+        assertEquals("Jun", SerialDate.monthCodeToString(SerialDate.JUNE, true));
+        assertEquals("Jul", SerialDate.monthCodeToString(SerialDate.JULY, true));
+        assertEquals("Aug", SerialDate.monthCodeToString(SerialDate.AUGUST, true));
+        assertEquals("Sep", SerialDate.monthCodeToString(SerialDate.SEPTEMBER, true));
+        assertEquals("Oct", SerialDate.monthCodeToString(SerialDate.OCTOBER, true));
+        assertEquals("Nov", SerialDate.monthCodeToString(SerialDate.NOVEMBER, true));
+        assertEquals("Dev", SerialDate.monthCodeToString(SerialDate.DECEMBER, true));
         try {
             SerialDate.monthCodeToString(ILLEGAL_MONTH);
         } catch (IllegalArgumentException expectedException) {
