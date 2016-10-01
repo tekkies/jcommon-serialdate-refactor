@@ -358,7 +358,8 @@ public class ExtraSerialDateTests extends TestCase {
         SerialDate saturday20Aug2016 = SerialDate.createInstance(20, 8, 2016);
         Calendar calendar = Calendar.getInstance();
         calendar.set(2016, 8 - 1, 20, 0, 0, 0);
-        assertEquals(calendar.getTime(), saturday20Aug2016.toDate());
+        long difference = saturday20Aug2016.toDate().getTime() - calendar.getTime().getTime();
+        assertTrue(difference <= 1);
     }
 
     public void testEquals() {
