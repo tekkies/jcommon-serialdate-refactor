@@ -40,10 +40,40 @@ import junit.framework.TestSuite;
 import org.jfree.date.MonthConstants;
 import org.jfree.date.SerialDate;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ExtraSerialDateTests extends TestCase {
+    
+    public class LongMonthName {
+        public static final String JANUARY = "January";
+        public static final String FEBRUARY = "February";
+        public static final String MARCH = "March";
+        public static final String APRIL = "April";
+        public static final String MAY = "May";
+        public static final String JUNE = "June";
+        public static final String JULY = "July";
+        public static final String AUGUST = "August";
+        public static final String SEPTEMBER = "September";
+        public static final String OCTOBER = "October";
+        public static final String NOVEMBER = "November";
+        public static final String DECEMBER = "December";
+    }
+    
+    public class ShortMonthName {
+        public static final String JAN = "Jan";
+        public static final String FEB = "Feb";
+        public static final String MAR = "Mar";
+        public static final String APR = "Apr";
+        public static final String MAY = "May";
+        public static final String JUN = "Jun";
+        public static final String JUL = "Jul";
+        public static final String AUG = "Aug";
+        public static final String SEP = "Sep";
+        public static final String OCT = "Oct";
+        public static final String NOV = "Nov";
+        public static final String DEC = "Dec";
+       
+    }
 
     public static final int ILLEGAL_MONTH = -1;
     public static final boolean originalBehaviour = true;
@@ -111,37 +141,38 @@ public class ExtraSerialDateTests extends TestCase {
     }
 
     public void testMonthCodeToString() {
-        assertEquals("Jan", SerialDate.monthCodeToString(SerialDate.JANUARY, true));
-        assertEquals("Feb", SerialDate.monthCodeToString(SerialDate.FEBRUARY, true));
-        assertEquals("Mar", SerialDate.monthCodeToString(SerialDate.MARCH, true));
-        assertEquals("Apr", SerialDate.monthCodeToString(SerialDate.APRIL, true));
-        assertEquals("May", SerialDate.monthCodeToString(SerialDate.MAY, true));
-        assertEquals("Jun", SerialDate.monthCodeToString(SerialDate.JUNE, true));
-        assertEquals("Jul", SerialDate.monthCodeToString(SerialDate.JULY, true));
-        assertEquals("Aug", SerialDate.monthCodeToString(SerialDate.AUGUST, true));
-        assertEquals("Sep", SerialDate.monthCodeToString(SerialDate.SEPTEMBER, true));
-        assertEquals("Oct", SerialDate.monthCodeToString(SerialDate.OCTOBER, true));
-        assertEquals("Nov", SerialDate.monthCodeToString(SerialDate.NOVEMBER, true));
-        assertEquals("Dec", SerialDate.monthCodeToString(SerialDate.DECEMBER, true));
+        assertEquals(ShortMonthName.JAN, SerialDate.monthCodeToString(SerialDate.JANUARY, true));
+        assertEquals(ShortMonthName.FEB, SerialDate.monthCodeToString(SerialDate.FEBRUARY, true));
+        assertEquals(ShortMonthName.MAR, SerialDate.monthCodeToString(SerialDate.MARCH, true));
+        assertEquals(ShortMonthName.APR, SerialDate.monthCodeToString(SerialDate.APRIL, true));
+        assertEquals(ShortMonthName.MAY, SerialDate.monthCodeToString(SerialDate.MAY, true));
+        assertEquals(ShortMonthName.JUN, SerialDate.monthCodeToString(SerialDate.JUNE, true));
+        assertEquals(ShortMonthName.JUL, SerialDate.monthCodeToString(SerialDate.JULY, true));
+        assertEquals(ShortMonthName.AUG, SerialDate.monthCodeToString(SerialDate.AUGUST, true));
+        assertEquals(ShortMonthName.SEP, SerialDate.monthCodeToString(SerialDate.SEPTEMBER, true));
+        assertEquals(ShortMonthName.OCT, SerialDate.monthCodeToString(SerialDate.OCTOBER, true));
+        assertEquals(ShortMonthName.NOV, SerialDate.monthCodeToString(SerialDate.NOVEMBER, true));
+        assertEquals(ShortMonthName.DEC, SerialDate.monthCodeToString(SerialDate.DECEMBER, true));
 
-        assertEquals("January", SerialDate.monthCodeToString(SerialDate.JANUARY, false));
-        assertEquals("February", SerialDate.monthCodeToString(SerialDate.FEBRUARY, false));
-        assertEquals("March", SerialDate.monthCodeToString(SerialDate.MARCH, false));
-        assertEquals("April", SerialDate.monthCodeToString(SerialDate.APRIL, false));
-        assertEquals("May", SerialDate.monthCodeToString(SerialDate.MAY, false));
-        assertEquals("June", SerialDate.monthCodeToString(SerialDate.JUNE, false));
-        assertEquals("July", SerialDate.monthCodeToString(SerialDate.JULY, false));
-        assertEquals("August", SerialDate.monthCodeToString(SerialDate.AUGUST, false));
-        assertEquals("September", SerialDate.monthCodeToString(SerialDate.SEPTEMBER, false));
-        assertEquals("October", SerialDate.monthCodeToString(SerialDate.OCTOBER, false));
-        assertEquals("November", SerialDate.monthCodeToString(SerialDate.NOVEMBER, false));
-        assertEquals("December", SerialDate.monthCodeToString(SerialDate.DECEMBER, false));
+        assertEquals(LongMonthName.JANUARY, SerialDate.monthCodeToString(SerialDate.JANUARY, false));
+        assertEquals(LongMonthName.FEBRUARY, SerialDate.monthCodeToString(SerialDate.FEBRUARY, false));
+        assertEquals(LongMonthName.MARCH, SerialDate.monthCodeToString(SerialDate.MARCH, false));
+        assertEquals(LongMonthName.APRIL, SerialDate.monthCodeToString(SerialDate.APRIL, false));
+        assertEquals(LongMonthName.MAY, SerialDate.monthCodeToString(SerialDate.MAY, false));
+        assertEquals(LongMonthName.JUNE, SerialDate.monthCodeToString(SerialDate.JUNE, false));
+        assertEquals(LongMonthName.JULY, SerialDate.monthCodeToString(SerialDate.JULY, false));
+        assertEquals(LongMonthName.AUGUST, SerialDate.monthCodeToString(SerialDate.AUGUST, false));
+        assertEquals(LongMonthName.SEPTEMBER, SerialDate.monthCodeToString(SerialDate.SEPTEMBER, false));
+        assertEquals(LongMonthName.OCTOBER, SerialDate.monthCodeToString(SerialDate.OCTOBER, false));
+        assertEquals(LongMonthName.NOVEMBER, SerialDate.monthCodeToString(SerialDate.NOVEMBER, false));
+        assertEquals(LongMonthName.DECEMBER, SerialDate.monthCodeToString(SerialDate.DECEMBER, false));
 
         try {
             SerialDate.monthCodeToString(ILLEGAL_MONTH);
         } catch (IllegalArgumentException expectedException) {
         }
     }
+
 
     public void testIsValidWeekInMonthCode() {
         assertEquals(true, SerialDate.isValidWeekInMonthCode(org.jfree.date.SerialDate.FIRST_WEEK_IN_MONTH));
