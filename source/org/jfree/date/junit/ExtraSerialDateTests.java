@@ -212,6 +212,27 @@ public class ExtraSerialDateTests extends TestCase {
         assertEquals(false, SerialDate.isValidWeekInMonthCode(-1));
     }
 
+    public void testIsLeapYear() {
+        assertFalse(SerialDate.isLeapYear(1900));
+        assertFalse(SerialDate.isLeapYear(1901));
+        assertFalse(SerialDate.isLeapYear(1902));
+        assertFalse(SerialDate.isLeapYear(1903));
+        assertTrue(SerialDate.isLeapYear(1904));
+        assertFalse(SerialDate.isLeapYear(1905));
+
+        assertFalse(SerialDate.isLeapYear(1907));
+        assertTrue(SerialDate.isLeapYear(1908));
+        assertFalse(SerialDate.isLeapYear(1909));
+
+        assertFalse(SerialDate.isLeapYear(2100));
+        assertTrue(SerialDate.isLeapYear(2104));
+
+        assertFalse(SerialDate.isLeapYear(2300));
+        assertTrue(SerialDate.isLeapYear(3496));
+        assertFalse(SerialDate.isLeapYear(3500));
+        assertTrue(SerialDate.isLeapYear(3504));
+    }
+
     public void testGetPreviousDayOfWeek() {
         try {
             SerialDate.getPreviousDayOfWeek(-1, SerialDate.createInstance(26, 10, 1985));
