@@ -173,6 +173,35 @@ public class ExtraSerialDateTests extends TestCase {
         }
     }
 
+    public void testStringToMonthCode() {
+        assertEquals(SerialDate.JANUARY, SerialDate.stringToMonthCode(LongMonthName.JANUARY));
+        assertEquals(SerialDate.FEBRUARY, SerialDate.stringToMonthCode(LongMonthName.FEBRUARY));
+        assertEquals(SerialDate.MARCH, SerialDate.stringToMonthCode(LongMonthName.MARCH));
+        assertEquals(SerialDate.APRIL, SerialDate.stringToMonthCode(LongMonthName.APRIL));
+        assertEquals(SerialDate.MAY, SerialDate.stringToMonthCode(LongMonthName.MAY));
+        assertEquals(SerialDate.JUNE, SerialDate.stringToMonthCode(LongMonthName.JUNE));
+        assertEquals(SerialDate.JULY, SerialDate.stringToMonthCode(LongMonthName.JULY));
+        assertEquals(SerialDate.AUGUST, SerialDate.stringToMonthCode(LongMonthName.AUGUST));
+        assertEquals(SerialDate.SEPTEMBER, SerialDate.stringToMonthCode(LongMonthName.SEPTEMBER));
+        assertEquals(SerialDate.OCTOBER, SerialDate.stringToMonthCode(LongMonthName.OCTOBER));
+        assertEquals(SerialDate.NOVEMBER, SerialDate.stringToMonthCode(LongMonthName.NOVEMBER));
+        assertEquals(SerialDate.DECEMBER, SerialDate.stringToMonthCode(LongMonthName.DECEMBER));
+        assertEquals(SerialDate.JUNE, SerialDate.stringToMonthCode("June"));
+
+        assertEquals(SerialDate.JANUARY, SerialDate.stringToMonthCode(ShortMonthName.JAN));
+        assertEquals(SerialDate.FEBRUARY, SerialDate.stringToMonthCode(ShortMonthName.FEB));
+        assertEquals(SerialDate.MARCH, SerialDate.stringToMonthCode(ShortMonthName.MAR));
+        assertEquals(SerialDate.APRIL, SerialDate.stringToMonthCode(ShortMonthName.APR));
+        assertEquals(SerialDate.MAY, SerialDate.stringToMonthCode(ShortMonthName.MAY));
+        assertEquals(SerialDate.JUNE, SerialDate.stringToMonthCode(ShortMonthName.JUN));
+        assertEquals(SerialDate.JULY, SerialDate.stringToMonthCode(ShortMonthName.JUL));
+        assertEquals(SerialDate.AUGUST, SerialDate.stringToMonthCode(ShortMonthName.AUG));
+        assertEquals(SerialDate.SEPTEMBER, SerialDate.stringToMonthCode(ShortMonthName.SEP));
+        assertEquals(SerialDate.OCTOBER, SerialDate.stringToMonthCode(ShortMonthName.OCT));
+        assertEquals(SerialDate.NOVEMBER, SerialDate.stringToMonthCode(ShortMonthName.NOV));
+        assertEquals(SerialDate.DECEMBER, SerialDate.stringToMonthCode(ShortMonthName.DEC));
+        assertEquals(SerialDate.JUNE, SerialDate.stringToMonthCode("June"));
+    }
 
     public void testIsValidWeekInMonthCode() {
         assertEquals(true, SerialDate.isValidWeekInMonthCode(org.jfree.date.SerialDate.FIRST_WEEK_IN_MONTH));
