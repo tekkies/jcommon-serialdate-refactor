@@ -2,6 +2,13 @@
 
 This repo is an attempt at refactoring the SerialDate class in THE JCOMMON CLASS LIBRARY, based on the process described in the book  [https://www.amazon.co.uk/dp/0132350882/ref=cm_sw_r_tw_dp_x_rWJWxbMNM4XNC "Clean Code by Robert C. Martin"]
 
+Steps
+* Increase code coverage close to 100%
+* Expand tests
+** Review the code under test, noting the hits of code coverage
+*** e.g. monthCodeToString had 4 hits on the first line.  As there are 12 months in the year, 12 or 24 hits (+ more for edge cases) would 
+
+
 The original README.txt file contents are shown below.
 
 	********************************************
