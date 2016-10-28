@@ -219,11 +219,12 @@ public class ExtraSerialDateTests extends TestCase {
         assertFalse(SerialDate.isLeapYear(1903));
         assertTrue(SerialDate.isLeapYear(1904));
         assertFalse(SerialDate.isLeapYear(1905));
-
         assertFalse(SerialDate.isLeapYear(1907));
         assertTrue(SerialDate.isLeapYear(1908));
         assertFalse(SerialDate.isLeapYear(1909));
+    }
 
+    public void testIsLeapYearAroundSkippedCenturies() {
         assertFalse(SerialDate.isLeapYear(2100));
         assertTrue(SerialDate.isLeapYear(2104));
 
@@ -232,6 +233,13 @@ public class ExtraSerialDateTests extends TestCase {
         assertFalse(SerialDate.isLeapYear(3500));
         assertTrue(SerialDate.isLeapYear(3504));
     }
+
+    public void testIsLeapYearAroundLeapCentuaries() {
+        assertTrue(SerialDate.isLeapYear(2000));
+        assertTrue(SerialDate.isLeapYear(2400));
+        assertTrue(SerialDate.isLeapYear(3600));
+    }
+
 
     public void testGetPreviousDayOfWeek() {
         try {
